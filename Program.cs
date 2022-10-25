@@ -5,8 +5,7 @@ namespace TicTacToe
 {
     internal class Program
     {
-        // Filling board with spaces(1,5,6,7,8 positions have ASCII symbol Alt+255 to avoid conflict with WinLogic();) 
-        static char[] table = { 'a', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+        static char[] table = { 'a', '.', ',', ',', ',', '.', '.', '.', '.', ',' };
         static uint turn = 1;
         static int choice;
         static bool GameRun = true;
@@ -36,33 +35,36 @@ namespace TicTacToe
         }
         static void TurnChoice()
         {
-            if(turn % 2 != 0) Console.WriteLine("Player:X TURN:\nChoose your position");
+            if (turn % 2 != 0) Console.WriteLine("Player:X TURN:\nChoose your position");
             else Console.WriteLine("Player:O TURN:\nChoose your position");
         }
         static void Validate()
         {
-            try {choice = Convert.ToInt32(Console.ReadLine()); }
-            catch (Exception) {Terminate();}
+            try { choice = Convert.ToInt32(Console.ReadLine()); }
+            catch (Exception) { Terminate(); }
             if (choice < 1 || choice > 9) Terminate();
             if (table[choice] != 'O' && table[choice] != 'X')
             {
-                if (turn % 2 == 0) { 
+                if (turn % 2 == 0)
+                {
                     table[choice] = 'O';
                     turn++;
                 }
-                else {
-                    table[choice] = 'X'; 
-                    turn++; 
+                else
+                {
+                    table[choice] = 'X';
+                    turn++;
                 }
             }
-            else {
+            else
+            {
                 Console.WriteLine("Position {0} is already taken by {1}!", choice, table[choice]);
                 Thread.Sleep(1000);
             }
         }
         static void WinLogic()
         {
-            if (turn > 9) {GameRun = false; return;}
+            if (turn > 9) { GameRun = false; return; }
             //horizontal axis
             if (table[1] == table[2] && table[2] == table[3]) GameRun = false;
             else if (table[4] == table[5] && table[5] == table[6]) GameRun = false;
@@ -79,7 +81,7 @@ namespace TicTacToe
         {
             Console.Clear();
             Draw();
-            if (turn > 9){ Console.WriteLine("\nDRAW"); return; }
+            if (turn > 9) { Console.WriteLine("\nDRAW"); return; }
             if (turn % 2 == 0) Console.WriteLine("\nPLAYER:X WON THE GAME!");
             else Console.WriteLine("\nPLAYER:O WON THE GAME!");
         }
