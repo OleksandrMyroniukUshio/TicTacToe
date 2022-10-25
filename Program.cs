@@ -12,7 +12,7 @@ namespace TicTacToe
         static bool GameRun = true;
         static void Draw()
         {
-            Console.WriteLine("¹    |2    |3     ");
+            Console.WriteLine("1    |2    |3     ");
             Console.WriteLine("  {0}  |  {1}  |  {2}", table[1], table[2], table[3]);
             Console.WriteLine("_____|_____|_____ ");
             Console.WriteLine("4    |5    |6     ");
